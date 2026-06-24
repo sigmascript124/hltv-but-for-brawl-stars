@@ -4,107 +4,294 @@
     <meta charset="UTF-8">
     <title>Brawl Stars Киберспорт Хаб</title>
     <style>
-        /* CSS: Делаем красивую темную тему как на HLTV */
         body {
-            background-color: #141921; /* Темный фон */
-            color: #ffffff; /* Белый текст */
-            font-family: Arial, sans-serif;
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 10px;
         }
 
         h1 {
-            color: #ff9f0a; /* Оранжевый акцент */
+            color: #58a6ff;
             text-align: center;
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
-        /* Стиль для таблицы команд */
+        p.subtitle {
+            text-align: center;
+            color: #8b949e;
+            margin-top: -10px;
+            font-size: 14px;
+        }
+
         .rating-table {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
             border-collapse: collapse;
-            background-color: #1b222d;
-            border-radius: 8px;
+            background-color: #161b22;
+            border-radius: 12px;
             overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .rating-table th, .rating-table td {
-            padding: 15px;
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #283346;
+            border-bottom: 1px solid #30363d;
         }
 
         .rating-table th {
-            background-color: #222b3c;
-            color: #ff9f0a;
+            background-color: #21262d;
+            color: #58a6ff;
+            font-size: 12px;
+            text-transform: uppercase;
         }
 
-        /* Подсветка строки при наведении мышки */
+        .rating-table td.center, .rating-table th.center {
+            text-align: center;
+            width: 80px;
+        }
+
+        .team-col {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .team-logo-small {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            object-fit: cover;
+            background-color: #21262d; /* Фон, пока нет картинки */
+        }
+
         .rating-table tr:hover {
-            background-color: #242f42;
+            background-color: #1f242c;
             cursor: pointer;
         }
 
-        /* Стиль для всплывающего состава */
         .roster-box {
-            display: none; /* Сначала скрыт */
-            background-color: #222b3c;
-            max-width: 800px;
+            display: none;
+            background-color: #161b22;
+            max-width: 900px;
             margin: 20px auto;
-            padding: 20px;
-            border-left: 5px solid #ff9f0a;
-            border-radius: 4px;
+            padding: 25px;
+            border-left: 5px solid #58a6ff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .roster-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .team-logo-big {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            object-fit: cover;
+            background-color: #21262d;
+        }
+
+        .team-title {
+            margin: 0;
+            color: #58a6ff;
+            font-size: 20px;
+        }
+
+        .player-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+        }
+
+        .player-card {
+            background-color: #21262d;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #30363d;
+        }
+
+        .player-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border: 2px solid #30363d;
+            background-color: #0d1117;
+        }
+
+        .player-nick {
+            font-weight: bold;
+            color: #f0f6fc;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
-    <h1>BRAWL STARS RATING (EMEA)</h1>
+    <h1>Brawl Stars Rating</h1>
+    <p class="subtitle">Киберспортивный топ команд (нажми для просмотра состава)</p>
 
-    <!-- Таблица лидеров -->
     <table class="rating-table">
         <thead>
             <tr>
-                <th>Место</th>
+                <th class="center">Место</th>
                 <th>Команда</th>
-                <th>Очки (BSC)</th>
+                <th class="center">Статус</th>
             </tr>
         </thead>
         <tbody>
-            <!-- При клике срабатывает JavaScript код, который покажет состав -->
-            <tr onclick="showRoster('FUT Esports', 'AngelBoy, Guesti, Nob?')">
-                <td>#1</td>
-                <td style="font-weight: bold; color: #ff9f0a;">FUT Esports</td>
-                <td>650</td>
+            <!-- #1 FUT Esports -->
+            <tr onclick="showRoster('FUT')">
+                <td class="center" style="font-weight: bold; color: #ff9f0a;">#1</td>
+                <td>
+                    <div class="team-col">
+                        <img id="list-logo-FUT" src="" class="team-logo-small" alt="FUT">
+                        <span style="font-weight: bold; color: #ff9f0a;">FUT Esports</span>
+                    </div>
+                </td>
+                <td class="center" style="color: #8b949e;">Топ-1</td>
             </tr>
-            <tr onclick="showRoster('HMBLE', 'BosS, Lukii, Symantec')">
-                <td>#2</td>
-                <td>HMBLE</td>
-                <td>520</td>
+            <!-- #2 HMBLE -->
+            <tr onclick="showRoster('HMBLE')">
+                <td class="center" style="font-weight: bold;">#2</td>
+                <td>
+                    <div class="team-col">
+                        <img id="list-logo-HMBLE" src="" class="team-logo-small" alt="HMBLE">
+                        <span>HMBLE</span>
+                    </div>
+                </td>
+                <td class="center" style="color: #8b949e;">Топ-2</td>
             </tr>
-            <tr onclick="showRoster('NAVI', 'Drage, Enraged, GeRo')">
-                <td>#3</td>
-                <td>Natus Vincere</td>
-                <td>410</td>
+            <!-- #3 ZETA DIVISION -->
+            <tr onclick="showRoster('ZETA')">
+                <td class="center" style="font-weight: bold;">#3</td>
+                <td>
+                    <div class="team-col">
+                        <img id="list-logo-ZETA" src="" class="team-logo-small" alt="ZETA">
+                        <span>ZETA DIVISION</span>
+                    </div>
+                </td>
+                <td class="center" style="color: #8b949e;">Топ-3</td>
+            </tr>
+            <!-- #4 NAVI -->
+            <tr onclick="showRoster('NAVI')">
+                <td class="center" style="font-weight: bold;">#4</td>
+                <td>
+                    <div class="team-col">
+                        <img id="list-logo-NAVI" src="" class="team-logo-small" alt="NAVI">
+                        <span>Natus Vincere</span>
+                    </div>
+                </td>
+                <td class="center" style="color: #8b949e;">Топ-4</td>
             </tr>
         </tbody>
     </table>
 
-    <!-- Блок, где будет появляться состав команды -->
+    <!-- Всплывающий блок состава -->
     <div id="roster" class="roster-box">
-        <h3 id="team-name" style="margin-top: 0; color: #ff9f0a;"></h3>
-        <p><strong>Текущий состав:</strong> <span id="player-list"></span></p>
+        <div class="roster-header">
+            <img id="team-logo-big" src="" class="team-logo-big" alt="Лого">
+            <h3 id="team-name" class="team-title"></h3>
+        </div>
+        <p style="margin-bottom: 15px;"><strong>Текущий состав:</strong></p>
+        <div id="player-grid" class="player-grid"></div>
     </div>
 
     <script>
-        /* JavaScript: Логика клика. Показывает состав выбранной команды */
-        function showRoster(name, players) {
+        // НАСТРОЙКА КАРТИНОК И СОСТАВОВ ТУТ:
+        // Замени текст 'ВСТАВЬ_ССЫЛКУ_СЮДА' на реальные ссылки на картинки (кавычки не стирай!)
+        const teamData = {
+            'FUT': {
+                name: 'FUT Esports',
+                logo: 'ВСТАВЬ_ССЫЛКУ_СЮДА', 
+                players: [
+                    { nick: 'AngerBoy', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Guesti', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Nob', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' }
+                ]
+            },
+            'HMBLE': {
+                name: 'HMBLE',
+                logo: 'ВСТАВЬ_ССЫЛКУ_СЮДА',
+                players: [
+                    { nick: 'BosS', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Lukii', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Symantec', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' }
+                ]
+            },
+            'ZETA': {
+                name: 'ZETA DIVISION',
+                logo: 'ВСТАВЬ_ССЫЛКУ_СЮДА',
+                players: [
+                    { nick: 'Battoman', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Sitetampo', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Sizuku', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' }
+                ]
+            },
+            'NAVI': {
+                name: 'Natus Vincere (NAVI)',
+                logo: 'ВСТАВЬ_ССЫЛКУ_СЮДА',
+                players: [
+                    { nick: 'Drage', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'Enraged', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' },
+                    { nick: 'GeRo', avatar: 'ВСТАВЬ_ССЫЛКУ_СЮДА' }
+                ]
+            }
+        };
+
+        // Код автоматически ставит маленькие логотипы в таблицу при запуске сайта
+        window.onload = function() {
+            for (let key in teamData) {
+                let imgElement = document.getElementById('list-logo-' + key);
+                if (imgElement && teamData[key].logo !== 'ВСТАВЬ_ССЫЛКУ_СЮДА') {
+                    imgElement.src = teamData[key].logo;
+                }
+            }
+        };
+
+        // Логика отображения состава при клике
+        function showRoster(teamKey) {
+            const data = teamData[teamKey];
             document.getElementById('roster').style.display = 'block';
-            document.getElementById('team-name').innerText = name;
-            document.getElementById('player-list').innerText = players;
+            document.getElementById('team-name').innerText = data.name;
+            
+            const bigLogo = document.getElementById('team-logo-big');
+            if (data.logo !== 'ВСТАВЬ_ССЫЛКУ_СЮДА') {
+                bigLogo.src = data.logo;
+                bigLogo.style.display = 'block';
+            } else {
+                bigLogo.style.display = 'none';
+            }
+
+            const grid = document.getElementById('player-grid');
+            grid.innerHTML = '';
+
+            data.players.forEach(player => {
+                const card = document.createElement('div');
+                card.className = 'player-card';
+                
+                // Если ссылки на аватар нет, ставим пустую заглушку
+                let imgSrc = player.avatar !== 'ВСТАВЬ_ССЫЛКУ_СЮДА' ? player.avatar : '';
+                
+                card.innerHTML = `
+                    <img src="${imgSrc}" class="player-avatar" alt="">
+                    <div class="player-nick">${player.nick}</div>
+                `;
+                grid.appendChild(card);
+            });
         }
     </script>
-
 </body>
 </html>

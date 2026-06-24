@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль игрока - Nob</title>
+    <style>
+        body {
+            background-color: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 30px auto;
+            background-color: #161b22;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 1px solid #30363d;
+        }
+        .back-btn {
+            display: inline-block;
+            color: #58a6ff;
+            text-decoration: none;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover { text-decoration: underline; }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #58a6ff;
+            object-fit: cover;
+            background-color: #0d1117;
+        }
+        h1 { color: #fff; margin: 10px 0 5px 0; font-size: 28px; }
+        .team-tag { color: #ff9f0a; font-weight: bold; font-size: 16px; margin-bottom: 5px; }
+        .real-name { color: #8b949e; font-size: 14px; margin-bottom: 5px; }
+        .mvp-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f5a623, #e8840a);
+            color: #000;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .stat-card {
+            background-color: #21262d;
+            padding: 14px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+        }
+        .stat-card.highlight {
+            border-color: #58a6ff44;
+            background-color: #1a2332;
+        }
+        .stat-value { font-size: 20px; font-weight: bold; color: #58a6ff; }
+        .stat-value.green { color: #3fb950; }
+        .stat-value.gold { color: #f5a623; }
+        .stat-label { font-size: 11px; color: #8b949e; text-transform: uppercase; margin-top: 5px; letter-spacing: 0.5px; }
+
+        .divider {
+            border: none;
+            border-top: 1px solid #30363d;
+            margin: 20px 0;
+        }
+        .bio {
+            font-size: 13px;
+            color: #8b949e;
+            line-height: 1.6;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <a href="index.html" class="back-btn">← Вернуться к топу команд</a>
+
+        <img src="nob.png" class="profile-avatar" alt="Nob">
+
+        <h1>Nob?</h1>
+        <div class="real-name">Тигран Арутюнян · 🇦🇲 Армения · 20 лет</div>
+        <div class="team-tag">FUT Esports</div>
+        <br>
+        <span class="mvp-badge">🏅 Финалист BSC 2026</span>
+
+        <div class="stats-grid">
+            <div class="stat-card highlight">
+                <div class="stat-value green">~68%</div>
+                <div class="stat-label">Винрейт</div>
+            </div>
+            <div class="stat-card highlight">
+                <div class="stat-value">1.15</div>
+                <div class="stat-label">Рейтинг формы</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value gold">—</div>
+                <div class="stat-label">Трофеи</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">—</div>
+                <div class="stat-label">Всего побед</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">—</div>
+                <div class="stat-label">Любимый бравлер</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2024</div>
+                <div class="stat-label">Дебют в про</div>
+            </div>
+        </div>
+
+        <hr class="divider">
+        <div class="bio">
+            Опытный игрок из Армении. В 2026 сезоне воссоединился с Angelboy в составе FUT Esports. Вместе взяли февральский финал EMEA — первый Monthly Final титул для обоих в этом составе.
+        </div>
+    </div>
+</body>
+</html>

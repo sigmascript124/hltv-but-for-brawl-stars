@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Brawl Stars Киберспорт Хаб</title>
+    <style>
+        /* CSS: Делаем красивую темную тему как на HLTV */
+        body {
+            background-color: #141921; /* Темный фон */
+            color: #ffffff; /* Белый текст */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #ff9f0a; /* Оранжевый акцент */
+            text-align: center;
+        }
+
+        /* Стиль для таблицы команд */
+        .rating-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #1b222d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .rating-table th, .rating-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #283346;
+        }
+
+        .rating-table th {
+            background-color: #222b3c;
+            color: #ff9f0a;
+        }
+
+        /* Подсветка строки при наведении мышки */
+        .rating-table tr:hover {
+            background-color: #242f42;
+            cursor: pointer;
+        }
+
+        /* Стиль для всплывающего состава */
+        .roster-box {
+            display: none; /* Сначала скрыт */
+            background-color: #222b3c;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border-left: 5px solid #ff9f0a;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>BRAWL STARS RATING (EMEA)</h1>
+
+    <!-- Таблица лидеров -->
+    <table class="rating-table">
+        <thead>
+            <tr>
+                <th>Место</th>
+                <th>Команда</th>
+                <th>Очки (BSC)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- При клике срабатывает JavaScript код, который покажет состав -->
+            <tr onclick="showRoster('FUT Esports', 'AngelBoy, Guesti, Nob?')">
+                <td>#1</td>
+                <td style="font-weight: bold; color: #ff9f0a;">FUT Esports</td>
+                <td>650</td>
+            </tr>
+            <tr onclick="showRoster('HMBLE', 'BosS, Lukii, Symantec')">
+                <td>#2</td>
+                <td>HMBLE</td>
+                <td>520</td>
+            </tr>
+            <tr onclick="showRoster('NAVI', 'Drage, Enraged, GeRo')">
+                <td>#3</td>
+                <td>Natus Vincere</td>
+                <td>410</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Блок, где будет появляться состав команды -->
+    <div id="roster" class="roster-box">
+        <h3 id="team-name" style="margin-top: 0; color: #ff9f0a;"></h3>
+        <p><strong>Текущий состав:</strong> <span id="player-list"></span></p>
+    </div>
+
+    <script>
+        /* JavaScript: Логика клика. Показывает состав выбранной команды */
+        function showRoster(name, players) {
+            document.getElementById('roster').style.display = 'block';
+            document.getElementById('team-name').innerText = name;
+            document.getElementById('player-list').innerText = players;
+        }
+    </script>
+
+</body>
+</html>

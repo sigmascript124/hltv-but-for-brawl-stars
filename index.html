@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- ЭТА СТРОЧКА ВКЛЮЧАЕТ АДАПТИВНОСТЬ ПОД СМАРТФОНЫ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brawl Stars Киберспорт Хаб</title>
     <style>
@@ -12,10 +11,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 10px;
-            padding-bottom: 60px; /* Отступ снизу для плашки версии */
+            padding-bottom: 60px;
         }
 
-        /* Версия сайта в углу экрана */
         .site-version {
             position: fixed;
             bottom: 10px;
@@ -48,12 +46,11 @@
             padding: 0 10px;
         }
 
-        /* Контейнер для адаптивной прокрутки таблицы на смартфонах */
         .table-container {
             width: 100%;
             max-width: 900px;
             margin: 20px auto;
-            overflow-x: auto; /* Включает прокрутку, если таблица не влазит */
+            overflow-x: auto;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             -webkit-overflow-scrolling: touch;
@@ -63,7 +60,7 @@
             width: 100%;
             border-collapse: collapse;
             background-color: #161b22;
-            min-width: 400px; /* Чтобы таблица не сжималась в кашу на крошечных экранах */
+            min-width: 400px;
         }
 
         .rating-table th, .rating-table td {
@@ -99,7 +96,6 @@
             transition: transform 0.2s ease;
         }
 
-        /* Анимации при наведении */
         .rating-table tr {
             transition: background-color 0.2s ease;
         }
@@ -113,7 +109,6 @@
             transform: scale(1.1);
         }
 
-        /* Всплывающий блок состава */
         .roster-box {
             display: none;
             background-color: #161b22;
@@ -153,13 +148,13 @@
             font-size: 20px;
         }
 
-        /* АДАПТИВНАЯ СЕТКА ИГРОКОВ: minmax делает магию переноса */
         .player-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
         }
 
+        /* ТУТ УСТАНОВЛЕН КУРСОР-ПОЙНТЕР ДЛЯ КАРТОЧЕК ИГРОКОВ */
         .player-card {
             background-color: #21262d;
             padding: 15px 10px;
@@ -167,6 +162,7 @@
             text-align: center;
             border: 1px solid #30363d;
             transition: transform 0.2s ease, border-color 0.2s ease;
+            cursor: pointer; 
         }
 
         .player-card:hover {
@@ -190,7 +186,6 @@
             font-size: 14px;
         }
 
-        /* НАСТРОЙКИ ДЛЯ СОВСЕМ МАЛЕНЬКИХ ЭКРАНОВ (МОБИЛКИ) */
         @media (max-width: 480px) {
             h1 { font-size: 20px; }
             .roster-box { padding: 15px; }
@@ -201,13 +196,11 @@
 </head>
 <body>
 
-    <!-- Версия сайта -->
-    <div class="site-version">v0.0.4</div>
+    <div class="site-version">v0.0.6</div>
 
     <h1>Brawl Stars Rating</h1>
-    <p class="subtitle">Киберспортивный топ команд (нажми для просмотра состава)</p>
+    <p class="subtitle">Киберспортивный топ команд (нажми на команду, затем на игрока)</p>
 
-    <!-- Обернули таблицу в контейнер table-container для адаптивности -->
     <div class="table-container">
         <table class="rating-table">
             <thead>
@@ -262,52 +255,52 @@
         </table>
     </div>
 
-    <!-- Всплывающий блок состава -->
     <div id="roster" class="roster-box">
         <div class="roster-header">
             <img id="team-logo-big" src="" class="team-logo-big" alt="Лого">
             <h3 id="team-name" class="team-title"></h3>
         </div>
-        <p style="margin-bottom: 15px;"><strong>Текущий состав:</strong></p>
+        <p style="margin-bottom: 15px;"><strong>Текущий состав (кликни для просмотра профиля):</strong></p>
         <div id="player-grid" class="player-grid"></div>
     </div>
 
     <script>
+        // Добавили параметр "profile" для каждого игрока
         const teamData = {
             'FUT': {
                 name: 'FUT Esports',
                 logo: 'fut-logo.png', 
                 players: [
-                    { nick: 'AngerBoy', avatar: 'angelboy.png' },
-                    { nick: 'Guesti', avatar: 'guesti.png' },
-                    { nick: 'Nob', avatar: 'nob.png' }
+                    { nick: 'AngerBoy', avatar: 'angelboy.png', profile: 'angelboy.html' },
+                    { nick: 'Guesti', avatar: 'guesti.png', profile: 'guesti.html' },
+                    { nick: 'Nob', avatar: 'nob.png', profile: 'nob.html' }
                 ]
             },
             'HMBLE': {
                 name: 'HMBLE',
                 logo: 'HMBLE-icon.png',
                 players: [
-                    { nick: 'BosS', avatar: 'boss-icon.png' },
-                    { nick: 'Lukii', avatar: 'lukii.png' },
-                    { nick: 'Symantec', avatar: 'symantec.png' }
+                    { nick: 'BosS', avatar: 'boss-icon.png', profile: 'boss.html' },
+                    { nick: 'Lukii', avatar: 'lukii.png', profile: 'lukii.html' },
+                    { nick: 'Symantec', avatar: 'symantec.png', profile: 'symantec.html' }
                 ]
             },
             'ZETA': {
                 name: 'ZETA DIVISION',
                 logo: 'zeta-logo.png',
                 players: [
-                    { nick: 'Battoman', avatar: 'battoman.png' },
-                    { nick: 'Sitetampo', avatar: 'stetampo.png' },
-                    { nick: 'Sizuku', avatar: '1200px-ZETA_Sizuku_at_WF25.png' }
+                    { nick: 'Battoman', avatar: 'battoman.png', profile: 'battoman.html' },
+                    { nick: 'Sitetampo', avatar: 'stetampo.png', profile: 'sitetampo.html' },
+                    { nick: 'Sizuku', avatar: '1200px-ZETA_Sizuku_at_WF25.png', profile: 'sizuku.html' }
                 ]
             },
             'NAVI': {
                 name: 'Natus Vincere (NAVI)',
                 logo: 'NAvi-logo.png',
                 players: [
-                    { nick: 'Drage', avatar: 'drage.jpg' },
-                    { nick: 'Enraged', avatar: 'enraged.png' },
-                    { nick: 'GeRo', avatar: 'gero.png' }
+                    { nick: 'Drage', avatar: 'drage.jpg', profile: 'drage.html' },
+                    { nick: 'Enraged', avatar: 'enraged.png', profile: 'enraged.html' },
+                    { nick: 'GeRo', avatar: 'gero.png', profile: 'gero.html' }
                 ]
             }
         };
@@ -315,7 +308,7 @@
         window.onload = function() {
             for (let key in teamData) {
                 let imgElement = document.getElementById('list-logo-' + key);
-                if (imgElement && teamData[key].logo !== 'ВСТАВЬ_ССЫЛКУ_СЮДА') {
+                if (imgElement && teamData[key].logo) {
                     imgElement.src = teamData[key].logo;
                 }
             }
@@ -332,7 +325,7 @@
             document.getElementById('team-name').innerText = data.name;
             
             const bigLogo = document.getElementById('team-logo-big');
-            if (data.logo !== 'ВСТАВЬ_ССЫЛКУ_СЮДА') {
+            if (data.logo) {
                 bigLogo.src = data.logo;
                 bigLogo.style.display = 'block';
             } else {
@@ -346,7 +339,12 @@
                 const card = document.createElement('div');
                 card.className = 'player-card';
                 
-                let imgSrc = player.avatar !== 'ВСТАВЬ_ССЫЛКУ_СЮДА' ? player.avatar : '';
+                // Перенаправление на страницу профиля при клике на карточку
+                card.onclick = function() {
+                    window.location.href = player.profile;
+                };
+                
+                let imgSrc = player.avatar ? player.avatar : '';
                 
                 card.innerHTML = `
                     <img src="${imgSrc}" class="player-avatar" alt="">

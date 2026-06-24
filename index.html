@@ -2,6 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <!-- ЭТА СТРОЧКА ВКЛЮЧАЕТ АДАПТИВНОСТЬ ПОД СМАРТФОНЫ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Brawl Stars Киберспорт Хаб</title>
     <style>
         body {
@@ -10,6 +12,23 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 10px;
+            padding-bottom: 60px; /* Отступ снизу для плашки версии */
+        }
+
+        /* Версия сайта в углу экрана */
+        .site-version {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: #21262d;
+            color: #8b949e;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            border: 1px solid #30363d;
+            font-family: monospace;
+            z-index: 9999;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
         }
 
         h1 {
@@ -18,6 +37,7 @@
             font-size: 24px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-top: 15px;
         }
 
         p.subtitle {
@@ -25,17 +45,25 @@
             color: #8b949e;
             margin-top: -10px;
             font-size: 14px;
+            padding: 0 10px;
+        }
+
+        /* Контейнер для адаптивной прокрутки таблицы на смартфонах */
+        .table-container {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            overflow-x: auto; /* Включает прокрутку, если таблица не влазит */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            -webkit-overflow-scrolling: touch;
         }
 
         .rating-table {
             width: 100%;
-            max-width: 900px;
-            margin: 20px auto;
             border-collapse: collapse;
             background-color: #161b22;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            min-width: 400px; /* Чтобы таблица не сжималась в кашу на крошечных экранах */
         }
 
         .rating-table th, .rating-table td {
@@ -53,7 +81,7 @@
 
         .rating-table td.center, .rating-table th.center {
             text-align: center;
-            width: 80px;
+            width: 60px;
         }
 
         .team-col {
@@ -63,39 +91,57 @@
         }
 
         .team-logo-small {
-            width: 30px;
-            height: 30px;
-            border-radius: 6px;
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
             object-fit: cover;
-            background-color: #21262d; /* Фон, пока нет картинки */
+            background-color: #21262d;
+            transition: transform 0.2s ease;
         }
 
-        .rating-table tr:hover {
+        /* Анимации при наведении */
+        .rating-table tr {
+            transition: background-color 0.2s ease;
+        }
+
+        .rating-table tbody tr:hover {
             background-color: #1f242c;
             cursor: pointer;
         }
+        
+        .rating-table tbody tr:hover .team-logo-small {
+            transform: scale(1.1);
+        }
 
+        /* Всплывающий блок состава */
         .roster-box {
             display: none;
             background-color: #161b22;
             max-width: 900px;
             margin: 20px auto;
-            padding: 25px;
+            padding: 20px;
             border-left: 5px solid #58a6ff;
             border-radius: 12px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-sizing: border-box;
+            animation: fadeIn 0.4s ease forwards; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .roster-header {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             margin-bottom: 20px;
         }
 
         .team-logo-big {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 12px;
             object-fit: cover;
             background-color: #21262d;
@@ -107,23 +153,30 @@
             font-size: 20px;
         }
 
+        /* АДАПТИВНАЯ СЕТКА ИГРОКОВ: minmax делает магию переноса */
         .player-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px;
         }
 
         .player-card {
             background-color: #21262d;
-            padding: 12px;
+            padding: 15px 10px;
             border-radius: 8px;
             text-align: center;
             border: 1px solid #30363d;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .player-card:hover {
+            transform: translateY(-4px);
+            border-color: #58a6ff;
         }
 
         .player-avatar {
-            width: 80px;
-            height: 80px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 10px;
@@ -136,68 +189,78 @@
             color: #f0f6fc;
             font-size: 14px;
         }
+
+        /* НАСТРОЙКИ ДЛЯ СОВСЕМ МАЛЕНЬКИХ ЭКРАНОВ (МОБИЛКИ) */
+        @media (max-width: 480px) {
+            h1 { font-size: 20px; }
+            .roster-box { padding: 15px; }
+            .player-grid { grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
+            .player-avatar { width: 55px; height: 55px; }
+        }
     </style>
 </head>
 <body>
 
+    <!-- Версия сайта -->
+    <div class="site-version">v0.0.4</div>
+
     <h1>Brawl Stars Rating</h1>
     <p class="subtitle">Киберспортивный топ команд (нажми для просмотра состава)</p>
 
-    <table class="rating-table">
-        <thead>
-            <tr>
-                <th class="center">Место</th>
-                <th>Команда</th>
-                <th class="center">Статус</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- #1 FUT Esports -->
-            <tr onclick="showRoster('FUT')">
-                <td class="center" style="font-weight: bold; color: #ff9f0a;">#1</td>
-                <td>
-                    <div class="team-col">
-                        <img id="list-logo-FUT" src="" class="team-logo-small" alt="FUT">
-                        <span style="font-weight: bold; color: #ff9f0a;">FUT Esports</span>
-                    </div>
-                </td>
-                <td class="center" style="color: #8b949e;">Топ-1</td>
-            </tr>
-            <!-- #2 HMBLE -->
-            <tr onclick="showRoster('HMBLE')">
-                <td class="center" style="font-weight: bold;">#2</td>
-                <td>
-                    <div class="team-col">
-                        <img id="list-logo-HMBLE" src="" class="team-logo-small" alt="HMBLE">
-                        <span>HMBLE</span>
-                    </div>
-                </td>
-                <td class="center" style="color: #8b949e;">Топ-2</td>
-            </tr>
-            <!-- #3 ZETA DIVISION -->
-            <tr onclick="showRoster('ZETA')">
-                <td class="center" style="font-weight: bold;">#3</td>
-                <td>
-                    <div class="team-col">
-                        <img id="list-logo-ZETA" src="" class="team-logo-small" alt="ZETA">
-                        <span>ZETA DIVISION</span>
-                    </div>
-                </td>
-                <td class="center" style="color: #8b949e;">Топ-3</td>
-            </tr>
-            <!-- #4 NAVI -->
-            <tr onclick="showRoster('NAVI')">
-                <td class="center" style="font-weight: bold;">#4</td>
-                <td>
-                    <div class="team-col">
-                        <img id="list-logo-NAVI" src="" class="team-logo-small" alt="NAVI">
-                        <span>Natus Vincere</span>
-                    </div>
-                </td>
-                <td class="center" style="color: #8b949e;">Топ-4</td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Обернули таблицу в контейнер table-container для адаптивности -->
+    <div class="table-container">
+        <table class="rating-table">
+            <thead>
+                <tr>
+                    <th class="center">Место</th>
+                    <th>Команда</th>
+                    <th class="center">Статус</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="showRoster('FUT')">
+                    <td class="center" style="font-weight: bold; color: #ff9f0a;">#1</td>
+                    <td>
+                        <div class="team-col">
+                            <img id="list-logo-FUT" src="" class="team-logo-small" alt="FUT">
+                            <span style="font-weight: bold; color: #ff9f0a;">FUT Esports</span>
+                        </div>
+                    </td>
+                    <td class="center" style="color: #8b949e;">Топ-1</td>
+                </tr>
+                <tr onclick="showRoster('HMBLE')">
+                    <td class="center" style="font-weight: bold;">#2</td>
+                    <td>
+                        <div class="team-col">
+                            <img id="list-logo-HMBLE" src="" class="team-logo-small" alt="HMBLE">
+                            <span>HMBLE</span>
+                        </div>
+                    </td>
+                    <td class="center" style="color: #8b949e;">Топ-2</td>
+                </tr>
+                <tr onclick="showRoster('ZETA')">
+                    <td class="center" style="font-weight: bold;">#3</td>
+                    <td>
+                        <div class="team-col">
+                            <img id="list-logo-ZETA" src="" class="team-logo-small" alt="ZETA">
+                            <span>ZETA DIVISION</span>
+                        </div>
+                    </td>
+                    <td class="center" style="color: #8b949e;">Топ-3</td>
+                </tr>
+                <tr onclick="showRoster('NAVI')">
+                    <td class="center" style="font-weight: bold;">#4</td>
+                    <td>
+                        <div class="team-col">
+                            <img id="list-logo-NAVI" src="" class="team-logo-small" alt="NAVI">
+                            <span>Natus Vincere</span>
+                        </div>
+                    </td>
+                    <td class="center" style="color: #8b949e;">Топ-4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <!-- Всплывающий блок состава -->
     <div id="roster" class="roster-box">
@@ -210,8 +273,6 @@
     </div>
 
     <script>
-        // НАСТРОЙКА КАРТИНОК И СОСТАВОВ ТУТ:
-        // Замени текст 'ВСТАВЬ_ССЫЛКУ_СЮДА' на реальные ссылки на картинки (кавычки не стирай!)
         const teamData = {
             'FUT': {
                 name: 'FUT Esports',
@@ -251,7 +312,6 @@
             }
         };
 
-        // Код автоматически ставит маленькие логотипы в таблицу при запуске сайта
         window.onload = function() {
             for (let key in teamData) {
                 let imgElement = document.getElementById('list-logo-' + key);
@@ -261,10 +321,14 @@
             }
         };
 
-        // Логика отображения состава при клике
         function showRoster(teamKey) {
             const data = teamData[teamKey];
-            document.getElementById('roster').style.display = 'block';
+            
+            const rosterBox = document.getElementById('roster');
+            rosterBox.style.display = 'none';
+            void rosterBox.offsetWidth; 
+            rosterBox.style.display = 'block';
+            
             document.getElementById('team-name').innerText = data.name;
             
             const bigLogo = document.getElementById('team-logo-big');
@@ -282,7 +346,6 @@
                 const card = document.createElement('div');
                 card.className = 'player-card';
                 
-                // Если ссылки на аватар нет, ставим пустую заглушку
                 let imgSrc = player.avatar !== 'ВСТАВЬ_ССЫЛКУ_СЮДА' ? player.avatar : '';
                 
                 card.innerHTML = `

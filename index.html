@@ -60,7 +60,7 @@
             width: 100%;
             border-collapse: collapse;
             background-color: #161b22;
-            min-width: 400px;
+            min-width: 450px;
         }
 
         .rating-table th, .rating-table td {
@@ -154,7 +154,6 @@
             gap: 12px;
         }
 
-        /* ТУТ УСТАНОВЛЕН КУРСОР-ПОЙНТЕР ДЛЯ КАРТОЧЕК ИГРОКОВ */
         .player-card {
             background-color: #21262d;
             padding: 15px 10px;
@@ -196,10 +195,10 @@
 </head>
 <body>
 
-    <div class="site-version">v0.0.6</div>
+    <div class="site-version">v0.0.8</div>
 
     <h1>Brawl Stars Rating</h1>
-    <p class="subtitle">Киберспортивный топ команд (нажми на команду, затем на игрока)</p>
+    <p class="subtitle">Киберспортивный топ-20 команд (нажми на команду для просмотра состава)</p>
 
     <div class="table-container">
         <table class="rating-table">
@@ -213,43 +212,103 @@
             <tbody>
                 <tr onclick="showRoster('FUT')">
                     <td class="center" style="font-weight: bold; color: #ff9f0a;">#1</td>
-                    <td>
-                        <div class="team-col">
-                            <img id="list-logo-FUT" src="" class="team-logo-small" alt="FUT">
-                            <span style="font-weight: bold; color: #ff9f0a;">FUT Esports</span>
-                        </div>
-                    </td>
+                    <td><div class="team-col"><img id="list-logo-FUT" src="" class="team-logo-small" alt="FUT"><span style="font-weight: bold; color: #ff9f0a;">FUT Esports</span></div></td>
                     <td class="center" style="color: #8b949e;">Топ-1</td>
                 </tr>
-                <tr onclick="showRoster('HMBLE')">
-                    <td class="center" style="font-weight: bold;">#2</td>
-                    <td>
-                        <div class="team-col">
-                            <img id="list-logo-HMBLE" src="" class="team-logo-small" alt="HMBLE">
-                            <span>HMBLE</span>
-                        </div>
-                    </td>
+                <tr onclick="showRoster('ALLU')">
+                    <td class="center" style="font-weight: bold; color: #d1d5db;">#2</td>
+                    <td><div class="team-col"><img id="list-logo-ALLU" src="" class="team-logo-small" alt="ALLU"><span style="font-weight: bold; color: #d1d5db;">Bounty Hunters Allu</span></div></td>
                     <td class="center" style="color: #8b949e;">Топ-2</td>
                 </tr>
-                <tr onclick="showRoster('ZETA')">
-                    <td class="center" style="font-weight: bold;">#3</td>
-                    <td>
-                        <div class="team-col">
-                            <img id="list-logo-ZETA" src="" class="team-logo-small" alt="ZETA">
-                            <span>ZETA DIVISION</span>
-                        </div>
-                    </td>
+                <tr onclick="showRoster('HMBLE')">
+                    <td class="center" style="font-weight: bold; color: #a3712a;">#3</td>
+                    <td><div class="team-col"><img id="list-logo-HMBLE" src="" class="team-logo-small" alt="HMBLE"><span style="font-weight: bold; color: #a3712a;">HMBLE</span></div></td>
                     <td class="center" style="color: #8b949e;">Топ-3</td>
                 </tr>
-                <tr onclick="showRoster('NAVI')">
+                <tr onclick="showRoster('ZETA')">
                     <td class="center" style="font-weight: bold;">#4</td>
-                    <td>
-                        <div class="team-col">
-                            <img id="list-logo-NAVI" src="" class="team-logo-small" alt="NAVI">
-                            <span>Natus Vincere</span>
-                        </div>
-                    </td>
+                    <td><div class="team-col"><img id="list-logo-ZETA" src="" class="team-logo-small" alt="ZETA"><span>ZETA DIVISION</span></div></td>
                     <td class="center" style="color: #8b949e;">Топ-4</td>
+                </tr>
+                <tr onclick="showRoster('TRIBE')">
+                    <td class="center" style="font-weight: bold;">#5</td>
+                    <td><div class="team-col"><img id="list-logo-TRIBE" src="" class="team-logo-small" alt="TRIBE"><span>Tribe Gaming</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-5</td>
+                </tr>
+                <tr onclick="showRoster('ELEKTROS')">
+                    <td class="center" style="font-weight: bold;">#6</td>
+                    <td><div class="team-col"><img id="list-logo-ELEKTROS" src="" class="team-logo-small" alt="ELEKTROS"><span>Team Elektros</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-6</td>
+                </tr>
+                <tr onclick="showRoster('CR')">
+                    <td class="center" style="font-weight: bold;">#7</td>
+                    <td><div class="team-col"><img id="list-logo-CR" src="" class="team-logo-small" alt="CR"><span>Crazy Raccoons</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-7</td>
+                </tr>
+                <tr onclick="showRoster('PIZZA')">
+                    <td class="center" style="font-weight: bold;">#8</td>
+                    <td><div class="team-col"><img id="list-logo-PIZZA" src="" class="team-logo-small" alt="PIZZA"><span>Pizza Congelada F/A</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-8</td>
+                </tr>
+                <tr onclick="showRoster('BOBBY')">
+                    <td class="center" style="font-weight: bold;">#9</td>
+                    <td><div class="team-col"><img id="list-logo-BOBBY" src="" class="team-logo-small" alt="BOBBY"><span>Free Agent Bobby</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-9</td>
+                </tr>
+                <tr onclick="showRoster('TOTEM')">
+                    <td class="center" style="font-weight: bold;">#10</td>
+                    <td><div class="team-col"><img id="list-logo-TOTEM" src="" class="team-logo-small" alt="TOTEM"><span>Reply Totem</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-10</td>
+                </tr>
+                <tr onclick="showRoster('VATIC')">
+                    <td class="center" style="font-weight: bold;">#11</td>
+                    <td><div class="team-col"><img id="list-logo-VATIC" src="" class="team-logo-small" alt="VATIC"><span>Vatic</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-11</td>
+                </tr>
+                <tr onclick="showRoster('NAVI')">
+                    <td class="center" style="font-weight: bold;">#12</td>
+                    <td><div class="team-col"><img id="list-logo-NAVI" src="" class="team-logo-small" alt="NAVI"><span>Natus Vincere</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-12</td>
+                </tr>
+                <tr onclick="showRoster('RIVAL')">
+                    <td class="center" style="font-weight: bold;">#13</td>
+                    <td><div class="team-col"><img id="list-logo-RIVAL" src="" class="team-logo-small" alt="RIVAL"><span>Rival Esports</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-13</td>
+                </tr>
+                <tr onclick="showRoster('SKC')">
+                    <td class="center" style="font-weight: bold;">#14</td>
+                    <td><div class="team-col"><img id="list-logo-SKC" src="" class="team-logo-small" alt="SKC"><span>SKCalalas Europa</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-14</td>
+                </tr>
+                <tr onclick="showRoster('LOUD')">
+                    <td class="center" style="font-weight: bold;">#15</td>
+                    <td><div class="team-col"><img id="list-logo-LOUD" src="" class="team-logo-small" alt="LOUD"><span>LOUD</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-15</td>
+                </tr>
+                <tr onclick="showRoster('OLIMPO')">
+                    <td class="center" style="font-weight: bold;">#16</td>
+                    <td><div class="team-col"><img id="list-logo-OLIMPO" src="" class="team-logo-small" alt="OLIMPO"><span>Olimpo Squad</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-16</td>
+                </tr>
+                <tr onclick="showRoster('KUMALA')">
+                    <td class="center" style="font-weight: bold;">#17</td>
+                    <td><div class="team-col"><img id="list-logo-KUMALA" src="" class="team-logo-small" alt="KUMALA"><span>Free Agent Kumalazawesta</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-17</td>
+                </tr>
+                <tr onclick="showRoster('NOVO')">
+                    <td class="center" style="font-weight: bold;">#18</td>
+                    <td><div class="team-col"><img id="list-logo-NOVO" src="" class="team-logo-small" alt="NOVO"><span>NOVO Esports</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-18</td>
+                </tr>
+                <tr onclick="showRoster('HERETICS')">
+                    <td class="center" style="font-weight: bold;">#19</td>
+                    <td><div class="team-col"><img id="list-logo-HERETICS" src="" class="team-logo-small" alt="HERETICS"><span>Team Heretics</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-19</td>
+                </tr>
+                <tr onclick="showRoster('SKCSA')">
+                    <td class="center" style="font-weight: bold;">#20</td>
+                    <td><div class="team-col"><img id="list-logo-SKCSA" src="" class="team-logo-small" alt="SKCSA"><span>SKCalalas South America</span></div></td>
+                    <td class="center" style="color: #8b949e;">Топ-20</td>
                 </tr>
             </tbody>
         </table>
@@ -265,7 +324,6 @@
     </div>
 
     <script>
-        // Добавили параметр "profile" для каждого игрока
         const teamData = {
             'FUT': {
                 name: 'FUT Esports',
@@ -274,6 +332,15 @@
                     { nick: 'AngerBoy', avatar: 'angelboy.png', profile: 'angelboy.html' },
                     { nick: 'Guesti', avatar: 'guesti.png', profile: 'guesti.html' },
                     { nick: 'Nob', avatar: 'nob.png', profile: 'nob.html' }
+                ]
+            },
+            'ALLU': {
+                name: 'Bounty Hunters Allu',
+                logo: 'allu-logo.png',
+                players: [
+                    { nick: 'iKaoss', avatar: 'allu-ikaoss.png', profile: 'ikaoss.html' },
+                    { nick: 'Rama', avatar: 'allu-rama.png', profile: 'rama.html' },
+                    { nick: 'SpenLC', avatar: 'allu-spen.png', profile: 'spenlc.html' }
                 ]
             },
             'HMBLE': {
@@ -294,6 +361,69 @@
                     { nick: 'Sizuku', avatar: '1200px-ZETA_Sizuku_at_WF25.png', profile: 'sizuku.html' }
                 ]
             },
+            'TRIBE': {
+                name: 'Tribe Gaming',
+                logo: 'tribe-logo.png',
+                players: [
+                    { nick: 'Tyrant', avatar: 'tribe-tyrant.png', profile: 'tyrant.html' },
+                    { nick: 'Fade', avatar: 'tribe-fade.png', profile: 'fade.png' },
+                    { nick: 'Relyzn', avatar: 'tribe-relyzn.png', profile: 'relyzn.html' }
+                ]
+            },
+            'ELEKTROS': {
+                name: 'Team Elektros',
+                logo: 'elektros-logo.png',
+                players: [
+                    { nick: 'Joker', avatar: 'elektros-joker.png', profile: 'joker.html' },
+                    { nick: 'Melty', avatar: 'elektros-melty.png', profile: 'melty.html' },
+                    { nick: 'Avel', avatar: 'elektros-avel.png', profile: 'avel.html' }
+                ]
+            },
+            'CR': {
+                name: 'Crazy Raccoons',
+                logo: 'cr-logo.png',
+                players: [
+                    { nick: 'Tensai', avatar: 'cr-tensai.png', profile: 'tensai.html' },
+                    { nick: 'Achapi', avatar: 'cr-achapi.png', profile: 'achapi.html' },
+                    { nick: 'Moya', avatar: 'cr-moya.png', profile: 'moya.html' }
+                ]
+            },
+            'PIZZA': {
+                name: 'Pizza Congelada F/A',
+                logo: 'pizza-logo.png',
+                players: [
+                    { nick: 'Alpaca', avatar: 'pizza-alpaca.png', profile: 'alpaca.html' },
+                    { nick: 'Tome', avatar: 'pizza-tome.png', profile: 'tome.html' },
+                    { nick: 'Ruki', avatar: 'pizza-ruki.png', profile: 'ruki.html' }
+                ]
+            },
+            'BOBBY': {
+                name: 'Free Agent Bobby',
+                logo: 'bobby-logo.png',
+                players: [
+                    { nick: 'Bobby', avatar: 'bobby-bobby.png', profile: 'bobby.html' },
+                    { nick: 'Rzm64', avatar: 'bobby-rzm.png', profile: 'rzm64.html' },
+                    { nick: 'OG', avatar: 'bobby-og.png', profile: 'og.html' }
+                ]
+            },
+            'TOTEM': {
+                name: 'Reply Totem',
+                logo: 'totem-logo.png',
+                players: [
+                    { nick: 'Maury', avatar: 'totem-maury.png', profile: 'maury.html' },
+                    { nick: 'Maru', avatar: 'totem-maru.png', profile: 'maru.html' },
+                    { nick: 'Joker', avatar: 'totem-joker.png', profile: 'joker-totem.html' }
+                ]
+            },
+            'VATIC': {
+                name: 'Vatic',
+                logo: 'vatic-logo.png',
+                players: [
+                    { nick: 'Shed', avatar: 'vatic-shed.png', profile: 'shed.html' },
+                    { nick: 'CUBE', avatar: 'vatic-cube.png', profile: 'cube.html' },
+                    { nick: 'Gero', avatar: 'vatic-gero.png', profile: 'gero-vatic.html' }
+                ]
+            },
             'NAVI': {
                 name: 'Natus Vincere (NAVI)',
                 logo: 'NAvi-logo.png',
@@ -301,6 +431,77 @@
                     { nick: 'Drage', avatar: 'drage.jpg', profile: 'drage.html' },
                     { nick: 'Enraged', avatar: 'enraged.png', profile: 'enraged.html' },
                     { nick: 'GeRo', avatar: 'gero.png', profile: 'gero.html' }
+                ]
+            },
+            'RIVAL': {
+                name: 'Rival Esports',
+                logo: 'rival-logo.png',
+                players: [
+                    { nick: 'GRIFF', avatar: 'rival-griff.png', profile: 'griff.html' },
+                    { nick: 'Luks', avatar: 'rival-luks.png', profile: 'luks.html' },
+                    { nick: 'Sly', avatar: 'rival-sly.png', profile: 'sly.html' }
+                ]
+            },
+            'SKC': {
+                name: 'SKCalalas Europa',
+                logo: 'skc-logo.png',
+                players: [
+                    { nick: 'Javi', avatar: 'skc-javi.png', profile: 'javi.html' },
+                    { nick: 'Lenain', avatar: 'skc-lenain.png', profile: 'lenain.html' },
+                    { nick: 'Odi', avatar: 'skc-odi.png', profile: 'odi.html' }
+                ]
+            },'LOUD': {
+                name: 'LOUD',
+                logo: 'loud-logo.png',
+                players: [
+                    { nick: 'KHz', avatar: 'loud-khz.png', profile: 'khz.html' },
+                    { nick: 'FireCrow', avatar: 'loud-firecrow.png', profile: 'firecrow.html' },
+                    { nick: 'Lele', avatar: 'loud-lele.png', profile: 'lele.html' }
+                ]
+            },
+            'OLIMPO': {
+                name: 'Olimpo Squad',
+                logo: 'olimpo-logo.png',
+                players: [
+                    { nick: 'Pro', avatar: 'olimpo-pro.png', profile: 'pro.html' },
+                    { nick: 'Zeta', avatar: 'olimpo-zeta.png', profile: 'zeta-player.html' },
+                    { nick: 'Kuka', avatar: 'olimpo-kuka.png', profile: 'kuka.html' }
+                ]
+            },
+            'KUMALA': {
+                name: 'Free Agent Kumalazawesta',
+                logo: 'kumala-logo.png',
+                players: [
+                    { nick: 'Kumala', avatar: 'kumala-p.png', profile: 'kumala.html' },
+                    { nick: 'Juicy', avatar: 'kumala-juicy.png', profile: 'juicy.html' },
+                    { nick: 'NoName', avatar: 'kumala-noname.png', profile: 'noname.html' }
+                ]
+            },
+            'NOVO': {
+                name: 'NOVO Esports',
+                logo: 'novo-logo.png',
+                players: [
+                    { nick: 'Angel', avatar: 'novo-angel.png', profile: 'novo-angel.html' },
+                    { nick: 'Kira', avatar: 'novo-kira.png', profile: 'kira.html' },
+                    { nick: 'Drak', avatar: 'novo-drak.png', profile: 'drak.html' }
+                ]
+            },
+            'HERETICS': {
+                name: 'Team Heretics',
+                logo: 'heretics-logo.png',
+                players: [
+                    { nick: 'Kaze', avatar: 'heretics-kaze.png', profile: 'kaze.html' },
+                    { nick: 'Mebius', avatar: 'heretics-mebius.png', profile: 'mebius.html' },
+                    { nick: 'Guly', avatar: 'heretics-guly.png', profile: 'guly.html' }
+                ]
+            },
+            'SKCSA': {
+                name: 'SKCalalas South America',
+                logo: 'skcsa-logo.png',
+                players: [
+                    { nick: 'Mocha', avatar: 'skcsa-mocha.png', profile: 'mocha.html' },
+                    { nick: 'VTZ', avatar: 'skcsa-vtz.png', profile: 'vtz.html' },
+                    { nick: 'Pekka', avatar: 'skcsa-pekka.png', profile: 'pekka.html' }
                 ]
             }
         };
@@ -316,6 +517,7 @@
 
         function showRoster(teamKey) {
             const data = teamData[teamKey];
+            if(!data) return;
             
             const rosterBox = document.getElementById('roster');
             rosterBox.style.display = 'none';
@@ -335,23 +537,23 @@
             const grid = document.getElementById('player-grid');
             grid.innerHTML = '';
 
-            data.players.forEach(player => {
-                const card = document.createElement('div');
-                card.className = 'player-card';
-                
-                // Перенаправление на страницу профиля при клике на карточку
-                card.onclick = function() {
-                    window.location.href = player.profile;
-                };
-                
-                let imgSrc = player.avatar ? player.avatar : '';
-                
-                card.innerHTML = `
-                    <img src="${imgSrc}" class="player-avatar" alt="">
-                    <div class="player-nick">${player.nick}</div>
-                `;
-                grid.appendChild(card);
-            });
+            if(data.players) {
+                data.players.forEach(player => {
+                    const card = document.createElement('div');
+                    card.className = 'player-card';
+                    
+                    card.onclick = function() {
+                        window.location.href = player.profile;
+                    };
+                 let imgSrc = player.avatar ? player.avatar : '';
+                    
+                    card.innerHTML = `
+                        <img src="${imgSrc}" class="player-avatar" alt="">
+                        <div class="player-nick">${player.nick}</div>
+                    `;
+                    grid.appendChild(card);
+                });
+            }
         }
     </script>
 </body>
